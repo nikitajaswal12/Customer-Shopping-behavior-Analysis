@@ -1,5 +1,7 @@
 Use project;
 
+Alter table customer_shopping_behavior RENAME TO cust_shopping;
+
 select * from cust_shopping;
 
 -- rest of the column names I changed from the dataset toolbar on the left by clicking on it and selecting alter table option.
