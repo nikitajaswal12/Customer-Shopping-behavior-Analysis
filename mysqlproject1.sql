@@ -14,11 +14,13 @@ select * from cust_shopping ;
 select Gender, SUM(Purchase_Amount) as Revenue from cust_shopping
 group by Gender;
 
+
 -- Q2. Which customers used a discount but still spent more than the average purchase amount?
 
 select Customer_ID, Purchase_Amount from cust_shopping
 where Discount_Applied ='Yes' and 
 Purchase_Amount > (select Avg(purchase_amount) from cust_shopping);
+
 
 -- Q3. Which are the top 5 products with the highest average review rating?
 
@@ -28,16 +30,19 @@ select item_purchased, Round(avg(review_rating), 2) from cust_shopping
 group by item_purchased 
 order by item_purchased, avg(review_rating) DESC limit 5;
 
+
 -- Q4. Compare the average Purchase Amounts between Standard and Express Shipping.
 
 select shipping_type , avg(purchase_amount) as avg_shipping_amount from cust_shopping
 where shipping_type in ('Express', 'Standard')
 group by shipping_type;
 
+
 -- Q5. Do subscribed customers spend more? Compare average spend and total revenue
 
 select subscription_status, Sum(Purchase_amount), avg(Purchase_amount) from cust_shopping
 group by subscription_status;
+
 
 -- Q6. which 5 products have the highest percentage of purchases with discounts applied?
 
@@ -46,6 +51,7 @@ select item_purchased,
 from cust_shopping
 group by item_purchased 
 order by percent_purchase DESC limit 5; 
+
 
 -- Q7. Segment customers into New, Returning, and Loyal 
 --     based on their total number of previous purchases, and show the count of each segment.
@@ -59,6 +65,7 @@ select case when previous_purchases <= 5 then 'New'
  select segments,count(segments) from segment_count
  group by segments;
 
+
 -- Q8. What are the top 3 most purchased products within each category?
 
 with top_purchased as(
@@ -69,6 +76,7 @@ group by category, item_purchased
 select items_ranks, category, item_purchased, items_counts 
 from top_purchased 
 where items_ranks <=3;
+
 
 -- Q9. Are customers who are repeat buyers (more than 5 previous purchases)
 --     also likely to subscribe?
@@ -87,6 +95,7 @@ count(customer_id) as repeat_buyers
 from cust_shopping
 where previous_purchases > 5
 group by subscription_status
+	
 
 -- Q10. What is the revenue contribution of each age group?
   
