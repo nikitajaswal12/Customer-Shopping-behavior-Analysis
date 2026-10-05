@@ -28,3 +28,9 @@ The queries in this project apply SQL techniques relevant to business analysis, 
 - Common table expressions and subqueries, where appropriate
 - Ranking products within categories, where appropriate
 - Calculating percentages and comparing customer groups
+
+- ## Dataset
+
+This project uses the [Customer Shopping Behavior dataset on Kaggle](https://www.kaggle.com/datasets/modelbybharath/customer-behavior-data-analyst-portfolio-project?select=customer_shopping_behavior.csv.csv).
+
+The dataset is not included in this repository. Download it from Kaggle and place the CSV in a `data/` folder before running the SQL queries.
